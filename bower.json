@@ -1,0 +1,24 @@
+{
+  "name": "Yo-Cache",
+  "version": "0.0.0",
+  "authors": [
+    "The Batee5 Brothers Co."
+  ],
+  "description": "Cache Simulation With SWAG",
+  "main": "index.html",
+  "keywords": [
+    "Cache",
+    "Simulator",
+    "RAM",
+    "Memory"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
