@@ -27,5 +27,13 @@
     "grunt-contrib-coffee": "^0.10.1",
     "grunt-contrib-sass": "^0.7.3",
     "grunt-contrib-watch": "^0.6.1"
+  },
+  "window": {
+    "title": "Yo! Cache",
+    "toolbar": false,
+    "frame": false,
+    "min_width": 400,
+    "min_height": 200,
+    "position": "center"
   }
 }
