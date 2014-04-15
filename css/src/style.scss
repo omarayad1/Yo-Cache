@@ -1,0 +1,18 @@
+$flat-blue: rgba(52, 152, 219,1.0);
+
+body {
+	background-color: $flat-blue;
+}
+.jumbotron {
+	margin-top: 10%;
+	background-color: rgba(0,0,0,0);
+	h1 {
+		color: #fff;
+		text-align: center;
+	}
+	p {
+		padding-top: -10px;
+		color: #fff;
+		text-align: center;
+	}
+}
