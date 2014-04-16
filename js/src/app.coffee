@@ -27,4 +27,5 @@
   window.yo_cache = Ember.Application.create()
 
   yo_cache.Router.map ->
-    @resource 'start', path: '/'
+    @route 'start', path: '/'
+    @route 'simulation-options', path: '/settings'
