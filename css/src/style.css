@@ -2,12 +2,12 @@ body {
   background-color: #3498db; }
 
 .jumbotron {
-  margin-top: 10%;
+  margin-top: 5%;
   background-color: rgba(0, 0, 0, 0); }
   .jumbotron h1 {
-    color: #fff;
+    padding-top: 25%;
     text-align: center; }
   .jumbotron p {
-    padding-top: -10px;
+    margin-top: -4%;
     color: #fff;
     text-align: center; }
