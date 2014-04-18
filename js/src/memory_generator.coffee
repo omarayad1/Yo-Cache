@@ -9,10 +9,16 @@
 #################################################################
 #################################################################
 ##
-## DANGER:
+## Memory Generator Class
 ##
-## With great power comes great responsibility,
-## and also some cookies
+## Generates Memory Sequences given the type of
+## the generator
+## Yeah Bitch!, We are That "Classy" *rimshot*
+## 
+## Functions implemented from "casheModels.js" *
+## this is merely a class implementaion
+##
+## * not to be mistaken with sexy cash models
 ##
 #################################################################
 #################################################################
@@ -24,8 +30,30 @@
 #################################################################
 #################################################################
 #################################################################
-window.yo_cache = Ember.Application.create()
 
-yo_cache.Router.map ->
-  @route 'start', path: '/'
-  @route 'simulation-options', path: '/settings'
+class memory_generator
+	random_generation: ->
+		address = Math.floor (Math.random() * 1024 * 1024)
+		address
+	sequential_generation: ->
+		if typeof address is undefined
+			address = 0
+		(address++) % (1024 * 1024)
+	fruity_loops: ->
+		if typeof address is undefined
+			address = 0
+		(address++) % (1024 * 4)
+	maple_loops: ->
+		if typeof address is undefined
+			address = 0
+		(address++) % (1024 * 24)
+	constructor: (generation_type) ->
+		@generation_type = generation_type
+		@generation_types = 
+			1: @random_generation
+			2: @sequential_generation
+			3: @fruity_loops
+			4: @maple_loops
+		@generation_types[@generation_type]
+
+modules.exports = memory_generator

@@ -1,5 +1,6 @@
 // The following is the memory address generator class.
-function memGenerator(method) {
+// deprecate this implemented another class
+/*function memGenerator(method) {
 
 	// This selects the method to be called. 
 	this.generate = function (method) {
@@ -45,8 +46,8 @@ function memGenerator(method) {
 		return (this.address++) % (1024*24);
 	};
 
-}
-
+}*/
+var memory_generator = require('memory_generator');
 // The following is the cashe simulator class.
 function casheSim(ways,lineSize) {
 	lineSize = typeof lineSize !== 'undefined' ? lineSize : 16;

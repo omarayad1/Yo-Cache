@@ -11,6 +11,7 @@ module.exports = (grunt) ->
       compile:
         files:
           "js/app.js": "js/src/app.coffee"
+          "js/memory_generator.js": "js/src/memory_generator.coffee"
 
     sass:
       dist:
@@ -24,10 +25,10 @@ module.exports = (grunt) ->
 
     nodewebkit:
       options:
-        build_dir: "./webkitbuilds" # Where the build version of my node-webkit app is saved
-        mac: false # We want to build it for mac
-        win: false # We want to build it for win
-        linux32: false # We don't need linux32
-        linux64: true # We don't need linux64
+        build_dir: "./webkitbuilds"
+        mac: false
+        win: false
+        linux32: false
+        linux64: true
 
-      src: ["./**/**"] # Your node-webkit app
+      src: ["./**/**"]
