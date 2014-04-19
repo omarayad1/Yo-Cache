@@ -8,18 +8,40 @@
 				$("#btn").click(function(){
 					var ways = $('input[name = cache_type]:checked').val();
 					var lineSize = $('#line_size').val();
-					var myCache = cacheSim(ways, lineSize);
+					var myCache1 = cacheSim(ways, lineSize);
+					var myCache2 = cacheSim(ways, lineSize);
+					var myCache3 = cacheSim(ways, lineSize);
+					var myCache4 = cacheSim(ways, lineSize);
 					var myGen = memGenerator();
 					var address;
-					var hits = 0;
-					var ratio;
-					myCache.initial();
+					var hits = [4];
+					for (var i=0; i<4; i++)
+						hits[i] = 0;
+					var ratio = [4];
+					// Initialize cache instances.
+					myCache1.initial();
+					myCache2.initial();
+					myCache3.initial();
+					myCache4.initial();
 					for (var inst=0; inst<1000000; inst++) {
 						address = myGen.generate("R");
-						if (myCache.hitOrMiss(address))
-							hits++;
+						if (myCache1.hitOrMiss(address))
+							hits[0]++;
+
+						address = myGen.generate("S");
+						if (myCache2.hitOrMiss(address))
+							hits[1]++;
+
+						address = myGen.generate("L1");
+						if (myCache3.hitOrMiss(address))
+							hits[2]++;
+
+						address = myGen.generate("L2");
+						if (myCache4.hitOrMiss(address))
+							hits[3]++;
 					}
-					ratio = hits / 1000000;
+					for (var i=0; i<4; i++)
+						ratio[i] = hits[i] / 1000000;
 				});
 			});
 		</script>
