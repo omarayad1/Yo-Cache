@@ -9,11 +9,14 @@
 #################################################################
 #################################################################
 ##
-## Memory Generator Class
+## Cache Class
 ##
-## Generates Memory Sequences given the type of
-## the generator
-## Yeah Bitch!, We are That "Classy" *rimshot*
+## 1. Generates a cache structure based on the number
+## of ways and the line size
+##
+## 2. Generates a Hit or Miss given a data address based
+## on some methods implemented in the class
+## Yeah Bitch!, Thats our "method" *rimshot*
 ## 
 ## Functions implemented from "casheModels.js" *
 ## this is merely a class implementaion
@@ -31,22 +34,29 @@
 #################################################################
 #################################################################
 
-class memory_generator
-	constructor: ->
-		@address_sequential = -1
-		@address_fruity = -1
-		@address_maple = -1
-	random_generation: ->
-		@instruction = Math.floor (Math.random() * (1024 * 1024))
-		@instruction
-	sequential_generation: ->
-		@address_sequential += 1
-		(@address_sequential) % (1024 * 1024)
-	fruity_loops: ->
-		@address_fruity += 1
-		(@address_fruity) % (1024 * 4)
-	maple_loops: ->
-		@address_maple += 1
-		(@address_maple) % (1024 * 24)
-
-module.exports = memory_generator
+class cache
+	constructor: (ways, line_size, cache_size = 16 * 1024, memory_size = 1024 * 1024) ->
+		@ways = ways
+		@line_size = line_size
+		@cache_size = cache_size
+		@memory_size = memory_size
+		@address_bit_size = Math.log(@memory_address_space) / Math.LN2
+		@offset_bit_size = (Math.log(@line_size) / Math.LN2)
+		if !@ways
+			@index_bit_size = 0
+		else if @ways == 1
+			@index_bit_size = (Math.log(@cache_size) / Math.LN2) - @offset_bit_size
+		else
+			@index_bit_size = (Math.log(@cache_size) / Math.LN2) - ((Math.log(@ways) / Math.LN2) + (Math.log(@line_size) / Math.LN2))
+		@tag_bit_size = @address_bit_size - @index_bit_size - @offset_bit_size
+		@memeory = NULL
+	read: (address) -> #This method has a buttload of mistakes fix it!
+		offset = address % @line_size
+		index = (address / @line_size) % @index_bit_size
+		tag = (address / (@index_bit_size * offset))
+		if @memeory.index.tag.offset is null
+			@memeory.index.tag.offset = address
+			return false
+		else
+			return true
+module.exports = cache

@@ -12,6 +12,7 @@ module.exports = (grunt) ->
         files:
           "js/app.js": "js/src/app.coffee"
           "js/memory_generator.js": "js/src/memory_generator.coffee"
+          "js/cache.js": "js/src/cache.coffee"
 
     sass:
       dist:
