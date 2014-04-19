@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="casheModels.js"></script>
+		<script>
+			// Upon clicking the button the following function activates.
+			$ (document).ready(function(){
+				$("#btn").click(function(){
+					var ways = $('input[name = cache_type]:checked').val();
+					var lineSize = $('#line_size').val();
+					var myCache = cacheSim(ways, lineSize);
+					var myGen = memGenerator();
+					var address;
+					var hits = 0;
+					var ratio;
+					myCache.initial();
+					for (var inst=0; inst<1000000; inst++) {
+						address = myGen.generate("R");
+						if (myCache.hitOrMiss(address))
+							hits++;
+					}
+					ratio = hits / 1000000;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			<select id = "line_size">
+				<option value="8" selected>8</option>
+				<option value="16">16</option>
+				<option value="32">32</option>
+				<option value="64">64</option>
+			</select>
+			<input type = "radio" value = "1" name = "cache_type"> Direct-mapped Cache <br>
+			<input type = "radio" value = "2" name = "cache_type"> 2-way Set-Associative Cache <br>
+			<input type = "radio" value = "4" name = "cache_type"> 4-way Set-Associative Cache <br>
+			<input type = "radio" value = "8" name = "cache_type"> 8-way Set-Associative Cache <br>
+			<input type = "radio" value = "0" name = "cache_type"> Fully Associative Cache <br>
+			<input type = "button" id = "btn" Value = Simulate/>
+		</form>
+	</body>
+</html>
