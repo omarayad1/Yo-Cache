@@ -33,7 +33,7 @@
     }
 
     cache.prototype.read = function(address) {
-      var empty, i, index, random_slot, tag;
+      var empty, i, index, random_slot, tag, _i, _ref;
       index = address >>> this.offset_bit_size;
       index = index << this.tag_bit_size;
       index = index >>> this.tag_bit_size;
@@ -45,6 +45,11 @@
           empty = i;
         }
       }
+      for (i = _i = 0, _ref = this.ways - 1; _i <= _ref; i = _i += 1) {
+        if (this.memory[index][i] === tag) {
+          return true;
+        }
+      }
       if (empty === !null) {
         this.memory[index][empty] = tag;
         return false;
@@ -53,7 +58,7 @@
         this.memory[index][random_slot];
         return false;
       } else {
-        return true;
+        return false;
       }
     };
 

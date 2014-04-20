@@ -67,7 +67,7 @@ class cache
 		for i in [0..@ways-1] by 1
 			if @memory[index][i] == tag
 				return true
-		else if empty is not null
+		if empty is not null
 			@memory[index][empty] = tag
 			return false
 		else if empty is null
