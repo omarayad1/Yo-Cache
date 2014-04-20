@@ -53,10 +53,17 @@ function cacheSim(ways,lineSize) {
 	var row, column;
 	var index;
 	// Addjusting the dimensions of the cache according the number of ways.
+	/**
+	 * Bazinga!!! something Wrong here, row is equal to size/(ways*line_size)
+	 */
 	switch (ways) {
 		// Direct-mapped Cache.
 		case 1:{
 			row = 16384/lineSize;
+			 /**
+			  * number of ways
+			  * @type {Number}
+			  */
 			column = 1;
 			index = row;
 			break;
@@ -108,6 +115,7 @@ function cacheSim(ways,lineSize) {
 
 	this.hitOrMiss = function(address) {
 		// The lineNum is the index part of the address.
+		// Bazinga another mistake better use shifting here
 		var lineNum = parseInt(address/lineSize);
 		lineNum = lineNum%index;
 		var tag = (address/(index*lineSize)); // The tag is the address after truncating the offset (lineSize) and the index.
