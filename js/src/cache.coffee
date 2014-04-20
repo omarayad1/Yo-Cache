@@ -64,7 +64,10 @@ class cache
 		while i < @ways
 			if @memory[index][i] is null
 				empty = i
-		if empty is not null
+		for i in [0..@ways-1] by 1
+			if @memory[index][i] == tag
+				return true
+		else if empty is not null
 			@memory[index][empty] = tag
 			return false
 		else if empty is null
@@ -72,5 +75,5 @@ class cache
 			@memory[index][random_slot]
 			return false
 		else
-			return true
+			return false
 module.exports = cache
