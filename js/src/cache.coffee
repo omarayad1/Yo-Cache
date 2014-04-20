@@ -52,8 +52,9 @@ class cache
 		@memeory = NULL
 	read: (address) -> #This method has a buttload of mistakes fix it!
 		offset = address % @line_size
-		index = (address / @line_size) % @index_bit_size
-		tag = (address / (@index_bit_size * offset))
+		index_size = Math.pow(2, @index_bit_size)
+		index = (address / @line_size) % index_size
+		tag = address / (index_size * offset)
 		if @memeory.index.tag.offset is null
 			@memeory.index.tag.offset = address
 			return false
