@@ -48,12 +48,10 @@ class cache
 		@tag_bit_size = @address_bit_size - @index_bit_size - @offset_bit_size
 		i = 0
 		j = 0
-		while i<@index
+		for i in [0..@index-1] by 1
 			@memory[i] = {}
-			while j < @ways
+			for j in [0..@ways-1] by 1
 				@memory[i][j] = null
-				j += 1
-			i += 1
 	read: (address) ->
 		index = address >>> @offset_bit_size
 		index = index << @tag_bit_size
@@ -61,11 +59,10 @@ class cache
 		tag = address >>> (@index_bit_size + @offset_bit_size)
 		i = 0
 		empty = null;
-		while i < @ways
+		for i in [0..@ways-1] by 1
 			if @memory[index][i] is null
 				empty = i
-		for i in [0..@ways-1] by 1
-			if @memory[index][i] == tag
+			else if @memory[index][i] == tag
 				return true
 		if empty is not null
 			@memory[index][empty] = tag

@@ -3,7 +3,7 @@
 
   cache = (function() {
     function cache(ways, line_size, cache_size, memory_size) {
-      var i, j;
+      var i, j, _i, _j, _ref, _ref1;
       if (cache_size == null) {
         cache_size = 16 * 1024;
       }
@@ -22,13 +22,11 @@
       this.tag_bit_size = this.address_bit_size - this.index_bit_size - this.offset_bit_size;
       i = 0;
       j = 0;
-      while (i < this.index) {
+      for (i = _i = 0, _ref = this.index - 1; _i <= _ref; i = _i += 1) {
         this.memory[i] = {};
-        while (j < this.ways) {
+        for (j = _j = 0, _ref1 = this.ways - 1; _j <= _ref1; j = _j += 1) {
           this.memory[i][j] = null;
-          j += 1;
         }
-        i += 1;
       }
     }
 
@@ -40,13 +38,10 @@
       tag = address >>> (this.index_bit_size + this.offset_bit_size);
       i = 0;
       empty = null;
-      while (i < this.ways) {
+      for (i = _i = 0, _ref = this.ways - 1; _i <= _ref; i = _i += 1) {
         if (this.memory[index][i] === null) {
           empty = i;
-        }
-      }
-      for (i = _i = 0, _ref = this.ways - 1; _i <= _ref; i = _i += 1) {
-        if (this.memory[index][i] === tag) {
+        } else if (this.memory[index][i] === tag) {
           return true;
         }
       }
