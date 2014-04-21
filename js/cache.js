@@ -22,6 +22,7 @@
       this.tag_bit_size = this.address_bit_size - this.index_bit_size - this.offset_bit_size;
       i = 0;
       j = 0;
+      this.memory = {};
       for (i = _i = 0, _ref = this.index - 1; _i <= _ref; i = _i += 1) {
         this.memory[i] = {};
         for (j = _j = 0, _ref1 = this.ways - 1; _j <= _ref1; j = _j += 1) {
@@ -33,8 +34,8 @@
     cache.prototype.read = function(address) {
       var empty, i, index, random_slot, tag, _i, _ref;
       index = address >>> this.offset_bit_size;
-      index = index << this.tag_bit_size;
-      index = index >>> this.tag_bit_size;
+      index = index << (32 - this.index_bit_size);
+      index = index >>> (32 - this.index_bit_size);
       tag = address >>> (this.index_bit_size + this.offset_bit_size);
       i = 0;
       empty = null;
@@ -45,14 +46,12 @@
           return true;
         }
       }
-      if (empty === !null) {
+      if (empty !== null) {
         this.memory[index][empty] = tag;
         return false;
       } else if (empty === null) {
         random_slot = Math.floor(Math.random() * (this.ways - 1));
-        this.memory[index][random_slot];
-        return false;
-      } else {
+        this.memory[index][random_slot] = tag;
         return false;
       }
     };

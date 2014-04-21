@@ -48,29 +48,28 @@ class cache
 		@tag_bit_size = @address_bit_size - @index_bit_size - @offset_bit_size
 		i = 0
 		j = 0
+		@memory = {}
 		for i in [0..@index-1] by 1
 			@memory[i] = {}
 			for j in [0..@ways-1] by 1
 				@memory[i][j] = null
 	read: (address) ->
 		index = address >>> @offset_bit_size
-		index = index << @tag_bit_size
-		index = index >>> @tag_bit_size
+		index = index << (32 - @index_bit_size)
+		index = index >>> (32 - @index_bit_size)
 		tag = address >>> (@index_bit_size + @offset_bit_size)
 		i = 0
-		empty = null;
+		empty = null
 		for i in [0..@ways-1] by 1
 			if @memory[index][i] is null
 				empty = i
 			else if @memory[index][i] == tag
 				return true
-		if empty is not null
+		if empty != null
 			@memory[index][empty] = tag
 			return false
 		else if empty is null
 			random_slot = Math.floor(Math.random()*(@ways-1))
-			@memory[index][random_slot]
-			return false
-		else
+			@memory[index][random_slot] = tag
 			return false
 module.exports = cache

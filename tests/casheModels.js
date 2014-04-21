@@ -123,6 +123,7 @@ function cacheSim(ways,lineSize) {
 		var empty = -1; // This is used to store the location of any empty location in the cache.
 		for (var j=0; j<column; j++) {
 			// If a cache line is empty store its location in empty.
+			
 			if (this.cache[lineNum][j] === -1)
 				empty = j;
 			// If a match is found return true.
@@ -133,6 +134,7 @@ function cacheSim(ways,lineSize) {
 				if (empty !== -1)
 					this.cache[lineNum][empty] = tag;
 				else
+					// Classic Bazinga!!! Math.floor(random()*(column - 1))
 					this.cache[lineNum][Math.floor(random()*column)] = tag;
 				return false;
 			}
