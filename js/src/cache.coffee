@@ -41,10 +41,10 @@ class cache
 		@cache_size = cache_size
 		@memory_size = memory_size
 		@index = if !@ways then 1 else @cache_size / (@ways * @line_size)
+		@index_bit_size = if !@ways then 0 else Math.log(@index) / Math.LN2
 		@ways = if !@ways then @cache_size / @line_size else @ways
 		@address_bit_size = Math.log(@memory_size) / Math.LN2
 		@offset_bit_size = Math.log(@line_size) / Math.LN2
-		@index_bit_size = Math.log(@index) / Math.LN2
 		@tag_bit_size = @address_bit_size - @index_bit_size - @offset_bit_size
 		i = 0
 		j = 0
@@ -54,9 +54,11 @@ class cache
 			for j in [0..@ways-1] by 1
 				@memory[i][j] = null
 	read: (address) ->
-		index = address >>> @offset_bit_size
-		index = index << (32 - @index_bit_size)
-		index = index >>> (32 - @index_bit_size)
+		index = 0
+		if @index_bit_size != 0
+			index = address >>> @offset_bit_size
+			index = index << (32 - @index_bit_size)
+			index = index >>> (32 - @index_bit_size)
 		tag = address >>> (@index_bit_size + @offset_bit_size)
 		i = 0
 		empty = null
