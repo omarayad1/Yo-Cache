@@ -54,7 +54,7 @@
 				{{input type="text" class="form-control" placeholder="Cache Name"}}
 				{{input type="text" class="form-control" placeholder="Memory Size"}}
 				{{input type="text" class="form-control" placeholder="Cache Size"}}
-				<select class="select-block">
+				<select class="select-block-style select-block">
 					<option>Select Cache Type</option>
 					<option value="0">Fully Associative Cache</option>
 					<option value="1">Direct Mapped Cache</option>
@@ -69,7 +69,13 @@
 			</div>
 		</div>
 		<script>
-
+		var i = 0;
+		$('.select-block').selectpicker();
+		$('.select-block').on('change', function(){
+			var value = $(this).children(':selected').text();
+			if (value==="Other") $('.other-cache-type').removeAttr('disabled');
+			else $('.other-cache-type').attr('disabled','disabled');
+		});
 		$('.line-size-range').ionRangeSlider({
 			min: 8,
 			max: 512,
@@ -77,24 +83,25 @@
 			step: 32
 		});
 		$('.cache-adder').on('click', function (){
-			$('.lord_of_the_caches').append('<form class="inline cache-input">\
+			var this_value = i;
+			$('.lord-of-the-caches').append('<form class="inline cache-input">\
 				{{input type="text" class="form-control" placeholder="Cache Name"}}\
 				{{input type="text" class="form-control" placeholder="Memory Size"}}\
 				{{input type="text" class="form-control" placeholder="Cache Size"}}\
-				<select class="select-block">\
+				<select class="select-block-style select-block-'+this_value+'">\
 					<option>Select Cache Type</option>\
 					<option value="0">Fully Associative Cache</option>\
 					<option value="1">Direct Mapped Cache</option>\
 					<option>Other</option>\
 				</select>\
-				{{input type="text" class="form-control other-cache-type" placeholder="Other" disabled="disabled"}}\
-			</form>');
-		});
-		$('.select-block').selectpicker();
-		$('.select-block').on('change', function(){
-			var value = $('select option:selected').text();
-			if (value==="Other") $('.other-cache-type').removeAttr('disabled');
-			else $('.other-cache-type').attr('disabled','disabled');
+				<input type="text" class="form-control other-cache-type-'+this_value+'" placeholder="Other" style="max-width:200px;float:left;margin-left:10px;" disabled="disabled"></form>');
+			$('.select-block-'+this_value).selectpicker();
+			$('.select-block-'+this_value).on('change', function(){
+				var value = $(this).children(':selected').text();
+				if (value==="Other") $('.other-cache-type-'+this_value).removeAttr('disabled');
+				else $('.other-cache-type-'+this_value).attr('disabled','disabled');
+			});
+			i++;
 		});
 		</script>
 		</script>

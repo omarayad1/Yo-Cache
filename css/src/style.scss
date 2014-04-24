@@ -28,11 +28,19 @@ body {
 		float: left;
 		margin-left: 10px;
 	}
-	.select-block {
+	.select-block-style {
 		max-width: 200px;
 		min-width: 200px;
 		float: left;
 		margin-left: 10px;
+		button {
+			max-width: 200px;
+			min-width: 200px;
+		}
+		ul {
+			max-width: 200px;
+			min-width: 200px;
+		}
 	}
 }
 .some-buttons-for-cache {
@@ -41,5 +49,7 @@ body {
 	margin-right: 90px;
 }
 form {
+	margin-bottom: 40px;
 	padding-bottom: 40px;
+	min-width: 100%;
 }

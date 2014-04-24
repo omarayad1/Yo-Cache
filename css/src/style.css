@@ -20,13 +20,24 @@ body {
   max-width: 200px;
   float: left;
   margin-left: 10px; }
-.cache-input .select-block {
+.cache-input .select-block-style {
   max-width: 200px;
   min-width: 200px;
   float: left;
   margin-left: 10px; }
+  .cache-input .select-block-style button {
+    max-width: 200px;
+    min-width: 200px; }
+  .cache-input .select-block-style ul {
+    max-width: 200px;
+    min-width: 200px; }
 
 .some-buttons-for-cache {
   margin-top: 30px;
   float: right;
   margin-right: 90px; }
+
+form {
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  min-width: 100%; }
