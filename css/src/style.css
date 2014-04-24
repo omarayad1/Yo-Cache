@@ -2,12 +2,31 @@ body {
   background-color: #3498db; }
 
 .jumbotron {
-  margin-top: 5%;
   background-color: rgba(0, 0, 0, 0); }
   .jumbotron h1 {
-    padding-top: 25%;
     text-align: center; }
   .jumbotron p {
+    color: #fff; }
+
+.start-container {
+  margin-top: 5%; }
+  .start-container h1 {
+    padding-top: 25%; }
+  .start-container p {
     margin-top: -4%;
-    color: #fff;
     text-align: center; }
+
+.cache-input input {
+  max-width: 200px;
+  float: left;
+  margin-left: 10px; }
+.cache-input .select-block {
+  max-width: 200px;
+  min-width: 200px;
+  float: left;
+  margin-left: 10px; }
+
+.some-buttons-for-cache {
+  margin-top: 30px;
+  float: right;
+  margin-right: 90px; }

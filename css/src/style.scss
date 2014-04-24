@@ -4,15 +4,42 @@ body {
 	background-color: $flat-blue;
 }
 .jumbotron {
-	margin-top: 5%;
 	background-color: rgba(0,0,0,0);
 	h1 {
-		padding-top: 25%;
 		text-align: center;
 	}
 	p {
-		margin-top: -4%;
 		color: #fff;
+	}
+}
+.start-container {
+	margin-top: 5%;
+	h1 {
+		padding-top: 25%;
+	}
+	p {
+		margin-top: -4%;
 		text-align: center;
 	}
+}
+.cache-input {
+	input {
+		max-width: 200px;
+		float: left;
+		margin-left: 10px;
+	}
+	.select-block {
+		max-width: 200px;
+		min-width: 200px;
+		float: left;
+		margin-left: 10px;
+	}
+}
+.some-buttons-for-cache {
+	margin-top: 30px;
+	float: right;
+	margin-right: 90px;
+}
+form {
+	padding-bottom: 40px;
 }

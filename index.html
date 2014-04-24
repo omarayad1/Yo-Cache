@@ -7,6 +7,16 @@
 		<script src="js/lib/ember.min.js"></script>
 		<script src="js/lib/ember-animated-outlet.min.js"></script>
 		<script src="js/lib/flatui-radio.js"></script>
+		<script src="js/lib/flatui-checkbox.js"></script>
+		<script src="js/lib/html5shiv.js"></script>
+		<script src="js/lib/jquery.placeholder.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/lib/bootstrap-select.js"></script>
+		<script src="js/lib/bootstrap-switch.js"></script>
+		<script src="js/lib/jquery.tagsinput.js"></script>
+		<script src="js/lib/respond.min.js"></script>
+		<script src="js/lib/typeahead.js"></script>
+		<script src="js/lib/ion.rangeSlider.min.js"></script>
 		<script src="js/lib/d3.min.js"></script>
 		<script src="js/app.js"></script>
 
@@ -15,13 +25,15 @@
 		<link rel="stylesheet" href="css/flat-ui.css">
 		<link rel="stylesheet" href="css/ember-animated-outlet.css">
 		<link rel="stylesheet" href="css/src/style.css">
+		<link rel="stylesheet" href="css/ion.rangeSlider.css">
+		<link rel="stylesheet" href="css/ion.rangeSlider.skinFlat.css">
 		
 		<title>Yo! Cache</title>
 	</head>
 	<body>
 		<!--This is my own private Handlebars templates and i will not be harassed, Bitch!!-->
 		<script type="text/x-handlebars" data-template-name="start">
-			<div class="jumbotron">
+			<div class="jumbotron start-container">
 				<img src="images/icons/svg/loop.svg" class="col-xs-4 col-xs-offset-4 col-lg-4 col-lg-offset-4" />
 				<h1>Yo! Cache</h1>
 				<p>Cache Simulation With SWAG</p>
@@ -34,23 +46,57 @@
 		<script type="text/x-handlebars" data-template-name="simulation-options">
 		<div class="jumbotron">
 			<h1>Simulation Options</h1>
-			<label class="radio checked">
-				<span class="icons">
-					<span class="first-icon fui-radio-unchecked"></span>
-					<span class="second-icon fui-radio-checked"></span>
-				</span>
-				<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" data-toggle="radio">
-				Direct Mapped Cache
-			</label>
-			<label class="radio">
-				<span class="icons">
-					<span class="first-icon fui-radio-unchecked"></span>
-					<span class="second-icon fui-radio-checked"></span>
-				</span>
-				<input type="radio" name="optionsRadios" id="optionsRadios2" value="option2" data-toggle="radio">
-				Associative Cache
-			</label>
+			<label>Line Size Range</label>
+			<input type='text' class='line-size-range' />
+			<label>Cache Properties</label>
+			<div class="lord-of-the-caches">
+			<form class="inline cache-input">
+				{{input type="text" class="form-control" placeholder="Cache Name"}}
+				{{input type="text" class="form-control" placeholder="Memory Size"}}
+				{{input type="text" class="form-control" placeholder="Cache Size"}}
+				<select class="select-block">
+					<option>Select Cache Type</option>
+					<option value="0">Fully Associative Cache</option>
+					<option value="1">Direct Mapped Cache</option>
+					<option>Other</option>
+				</select>
+				{{input type="text" class="form-control other-cache-type" placeholder="Other" disabled="disabled"}}
+			</form>
+			</div>
+			<div class="some-buttons-for-cache">
+				<div href='#' class="btn btn-inverse btn-lg cache-adder">Add Another Cache</div>
+				<a href='#' onclick="window.close()" class="btn btn-danger btn-lg">Simulate</a>
+			</div>
 		</div>
+		<script>
+
+		$('.line-size-range').ionRangeSlider({
+			min: 8,
+			max: 512,
+			type: 'double',
+			step: 32
+		});
+		$('.cache-adder').on('click', function (){
+			$('.lord_of_the_caches').append('<form class="inline cache-input">\
+				{{input type="text" class="form-control" placeholder="Cache Name"}}\
+				{{input type="text" class="form-control" placeholder="Memory Size"}}\
+				{{input type="text" class="form-control" placeholder="Cache Size"}}\
+				<select class="select-block">\
+					<option>Select Cache Type</option>\
+					<option value="0">Fully Associative Cache</option>\
+					<option value="1">Direct Mapped Cache</option>\
+					<option>Other</option>\
+				</select>\
+				{{input type="text" class="form-control other-cache-type" placeholder="Other" disabled="disabled"}}\
+			</form>');
+		});
+		$('.select-block').selectpicker();
+		$('.select-block').on('change', function(){
+			var value = $('select option:selected').text();
+			if (value==="Other") $('.other-cache-type').removeAttr('disabled');
+			else $('.other-cache-type').attr('disabled','disabled');
+		});
+		</script>
 		</script>
 	</body>
 </html>

@@ -32,9 +32,9 @@
   "window": {
     "title": "Yo! Cache",
     "toolbar": false,
-    "frame": false,
-    "min_width": 400,
-    "min_height": 200,
+    "frame": true,
+    "min_width": 1200,
+    "min_height": 600,
     "position": "center"
   }
 }
