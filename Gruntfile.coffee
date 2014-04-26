@@ -14,6 +14,7 @@ module.exports = (grunt) ->
           "node_modules/memory_generator.js": "js/src/memory_generator.coffee"
           "node_modules/cache.js": "js/src/cache.coffee"
           "node_modules/blade_runner.js": "js/src/blade_runner.coffee"
+          "js/views/range-slider.js": "js/src/views/range-slider.coffee"
 
     sass:
       dist:
