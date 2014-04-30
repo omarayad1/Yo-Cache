@@ -11,11 +11,10 @@ module.exports = (grunt) ->
       compile:
         files:
           "js/app.js": "js/src/app.coffee"
-          "node_modules/memory_generator.js": "js/src/memory_generator.coffee"
-          "node_modules/cache.js": "js/src/cache.coffee"
-          "node_modules/blade_runner.js": "js/src/blade_runner.coffee"
           "js/views/range-slider.js": "js/src/views/range-slider.coffee"
-
+          "js/cache.js":"js/src/modules/cache.coffee"
+          "js/memory_generator.js":"js/src/modules/memory_generator.coffee"
+          "js/blade_runner.js":"js/src/modules/blade_runner.coffee"
     sass:
       dist:
         files: [

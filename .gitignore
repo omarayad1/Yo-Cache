@@ -37,3 +37,10 @@ bower_components
 ## webkit Builds
 
 webkitbuilds
+
+## exported javascript files
+js/app.js
+js/views
+js/controllers
+js/models
+js/routes
