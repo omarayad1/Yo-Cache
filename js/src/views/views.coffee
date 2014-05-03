@@ -10,8 +10,6 @@ yo_cache.range_slider_view = Ember.View.extend(
 				type: 'double',
 				step: 32
 		)
-	get_max: -> 
-		$('.irs-to').text()
 )
 yo_cache.cache_properties_view = Ember.View.extend(
 	templateName: 'cache-properties'
@@ -19,14 +17,14 @@ yo_cache.cache_properties_view = Ember.View.extend(
 		dat_element = this
 		dat_element.$().find('.select-block').selectpicker()
 		dat_element.$().find('.select-block').on('change', ->
-			value = dat_element.$().children(':selected').text();
-			if (value == "Other") dat_element.$().find('.other-cache-type').removeAttr('disabled');
-			else dat_element.$().find('.other-cache-type').attr('disabled','disabled');
+			value = dat_element.$().find(':selected').text();
+			if (value == "Other")
+				dat_element.$().find('.other-cache-type').removeAttr('disabled');
+			else
+				dat_element.$().find('.other-cache-type').attr('disabled','disabled');
 		)
 	##	cache property view
 )
-
-yo_cache.cache_properties_collection = Ember.CollectionView.extend()
 
 Ember.Handlebars.helper 'range-slider', yo_cache.range_slider_view
 Ember.Handlebars.helper 'omak', yo_cache.cache_properties_view

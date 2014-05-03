@@ -19,7 +19,7 @@
 		<script src="js/lib/ion.rangeSlider.min.js"></script>
 		<script src="js/lib/d3.min.js"></script>
 		<script src="js/app.js"></script>
-		<script src="js/views/range-slider.js"></script>
+		<script src="js/views/views.js"></script>
 
 		<!--Styles, Bitch!!-->
 		<link rel="stylesheet" href="css/bootstrap.css">
@@ -57,33 +57,10 @@
 			{{omak}}
 			</div>
 			<div class="some-buttons-for-cache">
-				<div href='#' class="btn btn-inverse btn-lg cache-adder">Add Another Cache</div>
+				<div href='#' class="btn btn-inverse btn-lg cache-adder" onclick="yo_cache.cache_properties_view.create().appendTo('.lord-of-the-caches')">Add Another Cache</div>
 				<a href='#' onclick="window.close()" class="btn btn-danger btn-lg">Simulate</a>
 			</div>
 		</div>
-		<script>
-		$('.cache-adder').on('click', function (){
-			var this_value = i;
-			$('.lord-of-the-caches').append('<form class="inline cache-input">\
-				{{input type="text" class="form-control" placeholder="Cache Name"}}\
-				{{input type="text" class="form-control" placeholder="Memory Size"}}\
-				{{input type="text" class="form-control" placeholder="Cache Size"}}\
-				<select class="select-block-style select-block-'+this_value+'">\
-					<option>Select Cache Type</option>\
-					<option value="0">Fully Associative Cache</option>\
-					<option value="1">Direct Mapped Cache</option>\
-					<option>Other</option>\
-				</select>\
-				<input type="text" class="form-control other-cache-type-'+this_value+'" placeholder="Other" style="max-width:200px;float:left;margin-left:10px;" disabled="disabled"></form>');
-			$('.select-block-'+this_value).selectpicker();
-			$('.select-block-'+this_value).on('change', function(){
-				var value = $(this).children(':selected').text();
-				if (value==="Other") $('.other-cache-type-'+this_value).removeAttr('disabled');
-				else $('.other-cache-type-'+this_value).attr('disabled','disabled');
-			});
-			i++;
-		});
-		</script>
 		</script>
 		<!--Views, Bitch!!-->
 		<script type="text/x-handlebars" data-template-name="cache-properties">
