@@ -57,6 +57,7 @@ yo_cache.cache_adder_button = Ember.View.extend(
 	tagName: 'div'
 	classNames: ['btn', 'btn-inverse', 'btn-lg']
 	template: Ember.Handlebars.compile('Add Another Cache')
+	attributeBindings: ['href']
 	href: '#'
 	click: ->
 		yo_cache.cache_properties_view.create().appendTo('.lord-of-the-caches')
@@ -69,9 +70,14 @@ yo_cache.cache_simulator_button = Ember.View.extend(
 	href: './index.html#/simulation'
 	template: Ember.Handlebars.compile('Simulate')
 	click: ->
-		$('.cache-property').each( (data) ->
-			console.log('Eureka')
-			)
+		$('.cache-property').each (data) ->
+			dat = this
+			cache_name = $(dat).find('.cache-name').val()
+			memory_size = $(dat).find('.memory-size').val()
+			cache_size = $(dat).find('.cache-size').val()
+			ways = if $(dat).find('.select-block').find(':selected').text() == 'Other' \
+				then $(dat).find('.other-cache-type').val() \
+				else $(dat).find('.select-block').find(':selected').val()
 	)
 
 Ember.Handlebars.helper 'range-slider', yo_cache.range_slider_view

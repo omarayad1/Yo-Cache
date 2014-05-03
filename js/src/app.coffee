@@ -14,6 +14,9 @@
 ## With great power comes great responsibility,
 ## and also some cookies
 ##
+## Nah Just kidding there is nothing here but the
+## Ember app init
+##
 #################################################################
 #################################################################
 #################################################################

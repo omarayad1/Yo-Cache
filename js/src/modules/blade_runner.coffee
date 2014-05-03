@@ -21,4 +21,4 @@ yo_cache.blade_runner = Ember.Object.extend(
 			@data[ways][i] = @hits / (4*1000000)
 			i = i * 2
 		return @data
-);
+)

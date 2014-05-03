@@ -15,4 +15,4 @@ yo_cache.memory_generator = Ember.Object.extend(
 	maple_loops: ->
 		@address_maple += 1
 		(@address_maple) % (1024 * 24)
-);
+)

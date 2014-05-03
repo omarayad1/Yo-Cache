@@ -1,5 +1,5 @@
 yo_cache.cache = Ember.Object.extend(
-	init: (ways, line_size, cache_size = 16 * 1024, memory_size = 1024 * 1024) ->
+	init: (ways, line_size, cache_size, memory_size) ->
 		@ways = ways
 		@line_size = line_size
 		@cache_size = cache_size
@@ -38,4 +38,4 @@ yo_cache.cache = Ember.Object.extend(
 			random_slot = Math.floor(Math.random()*(@ways-1))
 			@memory[index][random_slot] = tag
 			return false
-);
+)
