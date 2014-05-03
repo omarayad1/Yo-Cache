@@ -19,6 +19,7 @@
 		<script src="js/lib/ion.rangeSlider.min.js"></script>
 		<script src="js/lib/d3.min.js"></script>
 		<script src="js/app.js"></script>
+		<script src="js/routes/routes.js"></script>
 		<script src="js/views/views.js"></script>
 
 		<!--Styles, Bitch!!-->
@@ -49,18 +50,21 @@
 		<div class="jumbotron">
 			<h1>Simulation Options</h1>
 			<div class="line-size-range-container">
-			<label>Line Size Range</label>
-			{{range-slider}}
+				<label>Line Size Range</label>
+				{{range-slider}}
 			</div>
 			<label>Cache Properties</label>
 			<div class="lord-of-the-caches">
-			{{omak}}
+				{{cache-properties}}
 			</div>
 			<div class="some-buttons-for-cache">
-				<div href='#' class="btn btn-inverse btn-lg cache-adder" onclick="yo_cache.cache_properties_view.create().appendTo('.lord-of-the-caches')">Add Another Cache</div>
-				<a href='#' onclick="window.close()" class="btn btn-danger btn-lg">Simulate</a>
+				{{cache-adder}}
+				{{cache-simulator-button}}
 			</div>
 		</div>
+		</script>
+		<script type="text/x-handlebars" data-template-name="simulation">
+			some batee5
 		</script>
 		<!--Views, Bitch!!-->
 		<script type="text/x-handlebars" data-template-name="cache-properties">
