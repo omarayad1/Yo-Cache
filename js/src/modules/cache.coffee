@@ -1,5 +1,4 @@
 yo_cache.cache = Ember.Object.extend(
-	memory: Ember.Object.extend().create()
 	init: ->
 		@ways
 		@line_size
@@ -13,6 +12,7 @@ yo_cache.cache = Ember.Object.extend(
 		@tag_bit_size = @address_bit_size - @index_bit_size - @offset_bit_size
 		i = 0
 		j = 0
+		@memory = Ember.Object.extend().create()
 		for i in [0..@index-1] by 1
 			@memory.set(i.toString(), Ember.Object.extend().create())
 			for j in [0..@ways-1] by 1
@@ -27,15 +27,15 @@ yo_cache.cache = Ember.Object.extend(
 		i = 0
 		empty = null
 		for i in [0..@ways-1] by 1
-			if @memory[index][i] is null
+			if @memory[index.toString()][i.toString()] is null
 				empty = i
-			else if @memory[index][i] == tag
+			else if @memory[index.toString()][i.toString()] == tag
 				return true
 		if empty != null
-			@memory[index][empty] = tag
+			@memory[index.toString()][empty.toString()] = tag
 			return false
 		else if empty is null
 			random_slot = Math.floor(Math.random()*(@ways-1))
-			@memory[index][random_slot] = tag
+			@memory[index.toString()][random_slot.toString()] = tag
 			return false
 )
