@@ -1,9 +1,10 @@
 yo_cache.cache = Ember.Object.extend(
-	init: (ways, line_size, cache_size, memory_size) ->
-		@ways = ways
-		@line_size = line_size
-		@cache_size = cache_size
-		@memory_size = memory_size
+	memory: Ember.Object.extend().create()
+	init: ->
+		@ways
+		@line_size
+		@cache_size
+		@memory_size
 		@index = if !@ways then 1 else @cache_size / (@ways * @line_size)
 		@index_bit_size = if !@ways then 0 else Math.log(@index) / Math.LN2
 		@ways = if !@ways then @cache_size / @line_size else @ways
@@ -12,11 +13,10 @@ yo_cache.cache = Ember.Object.extend(
 		@tag_bit_size = @address_bit_size - @index_bit_size - @offset_bit_size
 		i = 0
 		j = 0
-		@memory = {}
 		for i in [0..@index-1] by 1
-			@memory[i] = {}
+			@memory.set(i.toString(), Ember.Object.extend().create())
 			for j in [0..@ways-1] by 1
-				@memory[i][j] = null
+				@memory[i.toString()].set(j.toString(), null)
 	read: (address) ->
 		index = 0
 		if @index_bit_size != 0

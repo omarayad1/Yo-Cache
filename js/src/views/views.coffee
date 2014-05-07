@@ -82,8 +82,8 @@ yo_cache.cache_simulator_button = Ember.View.extend
 				upper_line_limit: parseInt(upper_line_limit)
 				cache_size: parseInt(cache_size)
 				memory_size: parseInt(memory_size)
-				)
-			console.log(data.data)
+			)
+			console.log(data)
 
 Ember.Handlebars.helper 'range-slider', yo_cache.range_slider_view
 Ember.Handlebars.helper 'cache-properties', yo_cache.cache_properties_view
