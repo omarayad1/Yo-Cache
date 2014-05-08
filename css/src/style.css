@@ -17,7 +17,7 @@ body {
     text-align: center; }
 
 .cache-input input {
-  max-width: 200px;
+  max-width: 160px;
   float: left;
   margin-left: 10px; }
 .cache-input .select-block-style {
@@ -40,4 +40,5 @@ body {
 form {
   margin-bottom: 40px;
   padding-bottom: 40px;
-  min-width: 100%; }
+  min-width: 100%;
+  max-width: 100%; }

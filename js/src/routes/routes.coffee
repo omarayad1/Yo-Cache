@@ -32,3 +32,4 @@ yo_cache.Router.map ->
 yo_cache.start_route = Ember.Route.extend()
 yo_cache.settings_route = Ember.Route.extend()
 yo_cache.simulation_route = Ember.Route.extend()
+yo_cache.LoadingRoute = Ember.Route.extend()

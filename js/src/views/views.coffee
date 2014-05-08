@@ -73,6 +73,7 @@ yo_cache.cache_simulator_button = Ember.View.extend
 			cache_name = $(dat).find('.cache-name').val()
 			memory_size = $(dat).find('.memory-size').val()
 			cache_size = $(dat).find('.cache-size').val()
+			iterations = $(dat).find('.iterations').val()
 			ways = if $(dat).find('.select-block').find(':selected').text() == 'Other' \
 				then $(dat).find('.other-cache-type').val() \
 				else $(dat).find('.select-block').find(':selected').val()
@@ -83,6 +84,7 @@ yo_cache.cache_simulator_button = Ember.View.extend
 				upper_line_limit: parseInt(upper_line_limit)
 				cache_size: eval(cache_size)
 				memory_size: eval(memory_size)
+				iterations: parseInt(iterations)
 			)
 			console.log(data.data)
 

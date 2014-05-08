@@ -24,7 +24,7 @@ body {
 }
 .cache-input {
 	input {
-		max-width: 200px;
+		max-width: 160px;
 		float: left;
 		margin-left: 10px;
 	}
@@ -52,4 +52,5 @@ form {
 	margin-bottom: 40px;
 	padding-bottom: 40px;
 	min-width: 100%;
+	max-width: 100%;
 }

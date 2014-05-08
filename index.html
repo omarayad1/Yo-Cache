@@ -49,32 +49,36 @@
 				</div>
 			</div>
 		</script>
+
 		<script type="text/x-handlebars" data-template-name="simulation-options">
-		<div class="jumbotron">
-			<h1>Simulation Options</h1>
-			<div class="line-size-range-container">
-				<label>Line Size Range</label>
-				{{range-slider}}
+			<div class="jumbotron">
+				<h1>Simulation Options</h1>
+				<div class="line-size-range-container">
+					<label>Line Size Range</label>
+					{{range-slider}}
+				</div>
+				<label>Cache Properties</label>
+				<div class="lord-of-the-caches">
+					{{cache-properties}}
+				</div>
+				<div class="some-buttons-for-cache">
+					{{cache-adder}}
+					{{cache-simulator-button}}
+				</div>
 			</div>
-			<label>Cache Properties</label>
-			<div class="lord-of-the-caches">
-				{{cache-properties}}
-			</div>
-			<div class="some-buttons-for-cache">
-				{{cache-adder}}
-				{{cache-simulator-button}}
-			</div>
-		</div>
 		</script>
+
 		<script type="text/x-handlebars" data-template-name="simulation">
 			some batee5
 		</script>
+
 		<!--Views, Bitch!!-->
 		<script type="text/x-handlebars" data-template-name="cache-properties">
 			<form class="inline cache-input">
 				{{input type="text" class="form-control cache-name" placeholder="Cache Name"}}
 				{{input type="text" class="form-control memory-size" placeholder="Memory Size"}}
 				{{input type="text" class="form-control cache-size" placeholder="Cache Size"}}
+				{{input type="text" class="form-control iterations" placeholder="Iterations"}}
 				<select class="select-block-style select-block">
 					<option>Select Cache Type</option>
 					<option value="0">Fully Associative Cache</option>
@@ -83,6 +87,9 @@
 				</select>
 				{{input type="text" class="form-control other-cache-type" placeholder="Other" disabled="disabled"}}
 			</form>
+		</script>
+		<script type="text/x-handlebars" data-template-name="loading">
+			<img src="images/loading-balls.svg" alt="Loading icon" />
 		</script>
 	</body>
 </html>
