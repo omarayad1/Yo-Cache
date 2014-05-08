@@ -67,7 +67,7 @@ yo_cache.cache_simulator_button = Ember.View.extend
 	click: ->
 		lower_line_limit = $('.irs-from').text()
 		upper_line_limit = $('.irs-to').text()
-
+		yo_cache.simulationdata = {}
 		$('.cache-property').each (data) ->
 			dat = this
 			cache_name = $(dat).find('.cache-name').val()
@@ -77,7 +77,7 @@ yo_cache.cache_simulator_button = Ember.View.extend
 			ways = if $(dat).find('.select-block').find(':selected').text() == 'Other' \
 				then $(dat).find('.other-cache-type').val() \
 				else $(dat).find('.select-block').find(':selected').val()
-			data = yo_cache.blade_runner.create(
+			results = yo_cache.blade_runner.create(
 				name: cache_name
 				ways: parseInt(ways)
 				lower_line_limit: parseInt(lower_line_limit)
@@ -86,7 +86,7 @@ yo_cache.cache_simulator_button = Ember.View.extend
 				memory_size: eval(memory_size)
 				iterations: parseInt(iterations)
 			)
-			console.log(data.data)
+			yo_cache['simulationdata'][cache_name] = results['a']['data'][cache_name]
 
 Ember.Handlebars.helper 'range-slider', yo_cache.range_slider_view
 Ember.Handlebars.helper 'cache-properties', yo_cache.cache_properties_view
