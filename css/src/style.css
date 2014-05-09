@@ -2,7 +2,7 @@ body {
   background-color: #3498db; }
 
 .jumbotron {
-  background-color: transparent; }
+  background-color: rgba(0, 0, 0, 0); }
   .jumbotron h1 {
     text-align: center; }
   .jumbotron p {

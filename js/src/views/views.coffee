@@ -24,6 +24,8 @@
 #################################################################
 #################################################################
 
+fs = require 'fs'
+
 yo_cache.options_view = Ember.View.extend
 	templateName: "simulation-options"
 
@@ -67,7 +69,7 @@ yo_cache.cache_simulator_button = Ember.View.extend
 	click: ->
 		lower_line_limit = $('.irs-from').text()
 		upper_line_limit = $('.irs-to').text()
-		yo_cache.simulationdata = {}
+		yo_cache.simulationdata = []
 		$('.cache-property').each (data) ->
 			dat = this
 			cache_name = $(dat).find('.cache-name').val()
@@ -86,9 +88,16 @@ yo_cache.cache_simulator_button = Ember.View.extend
 				memory_size: eval(memory_size)
 				iterations: parseInt(iterations)
 			)
-			yo_cache['simulationdata'][cache_name] = results['a']['data'][cache_name]
+			console.log(results)
+			yo_cache.simulationdata = yo_cache.simulationdata.concat(results.data)
+		fs.writeFileSync('/home/omarayad1/Documents/git/Yo-Cache/data.json', JSON.stringify(yo_cache.simulationdata))
+
+yo_cache.cache_graph_view = Ember.View.extend
+	classNames: ['chart', 'graph']
+	template: Ember.Handlebars.compile('Some Graphs')
 
 Ember.Handlebars.helper 'range-slider', yo_cache.range_slider_view
 Ember.Handlebars.helper 'cache-properties', yo_cache.cache_properties_view
 Ember.Handlebars.helper 'cache-adder', yo_cache.cache_adder_button
 Ember.Handlebars.helper 'cache-simulator-button', yo_cache.cache_simulator_button
+Ember.Handlebars.helper 'graph-results', yo_cache.cache_graph_view
