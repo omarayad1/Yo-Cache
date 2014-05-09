@@ -88,7 +88,6 @@ yo_cache.cache_simulator_button = Ember.View.extend
 				memory_size: eval(memory_size)
 				iterations: parseInt(iterations)
 			)
-			console.log(results)
 			yo_cache.simulationdata = yo_cache.simulationdata.concat(results.data)
 		fs.writeFileSync('/home/omarayad1/Documents/git/Yo-Cache/data.json', JSON.stringify(yo_cache.simulationdata))
 
@@ -107,14 +106,23 @@ yo_cache.cache_graph_view = Ember.View.extend
 		    .transitionDuration(500)\
 		    .showControls(true)\
 		    .clipEdge(true)
-		    chart.xAxis.tickFormat d3.format(",.2f")
-		    chart.yAxis.tickFormat d3.format(",.2f")
+		    chart.xAxis.tickFormat d3.format(",.0f")
+		    chart.yAxis.tickFormat d3.format(",.6f")
 		    d3.select("#chart svg").datum(data).call chart
 		    nv.utils.windowResize chart.update
 		    chart
+
+yo_cache.app_exit = Ember.View.extend
+	tagName: 'a'
+	classNames: ['btn', 'btn-danger', 'btn-lg', 'exit-button']
+	template: Ember.Handlebars.compile('Exit')
+	click: ->
+		gui = require 'nw.gui'
+		gui.App.quit()
 
 Ember.Handlebars.helper 'range-slider', yo_cache.range_slider_view
 Ember.Handlebars.helper 'cache-properties', yo_cache.cache_properties_view
 Ember.Handlebars.helper 'cache-adder', yo_cache.cache_adder_button
 Ember.Handlebars.helper 'cache-simulator-button', yo_cache.cache_simulator_button
 Ember.Handlebars.helper 'graph-results', yo_cache.cache_graph_view
+Ember.Handlebars.helper 'exit-button', yo_cache.app_exit

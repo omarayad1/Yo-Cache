@@ -47,7 +47,7 @@
 				<p>Cache Simulation With SWAG</p>
 				<div class="some-buttons col-xs-4 col-xs-offset-4 col-lg-4 col-lg-offset-5">
 					{{#link-to 'simulation-options'}}<div href='#' class="btn btn-inverse btn-lg">Start</div>{{/link-to}}
-					<a href='#' onclick="window.close()" class="btn btn-danger btn-lg">Exit</a>
+					{{exit-button}}
 				</div>
 			</div>
 		</script>
@@ -66,6 +66,7 @@
 				<div class="some-buttons-for-cache">
 					{{cache-adder}}
 					{{cache-simulator-button}}
+					{{exit-button}}
 				</div>
 			</div>
 		</script>
@@ -73,6 +74,7 @@
 		<script type="text/x-handlebars" data-template-name="simulation">
 			<h1>Results</h1>
 			{{graph-results}}
+			<div class="exit-for-graph">{{exit-button}}</div>
 		</script>
 
 		<!--Views, Bitch!!-->
