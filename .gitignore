@@ -45,3 +45,6 @@ js/controllers
 js/models
 js/routes
 js/modules
+
+## output data dumped
+data.json

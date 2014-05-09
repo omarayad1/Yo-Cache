@@ -93,8 +93,25 @@ yo_cache.cache_simulator_button = Ember.View.extend
 		fs.writeFileSync('/home/omarayad1/Documents/git/Yo-Cache/data.json', JSON.stringify(yo_cache.simulationdata))
 
 yo_cache.cache_graph_view = Ember.View.extend
-	classNames: ['chart', 'graph']
-	template: Ember.Handlebars.compile('Some Graphs')
+	classNames: ['graph']
+	template: Ember.Handlebars.compile("<div id='chart' style='width:100%'><svg style='height:500px' />")
+	didInsertElement: ->
+		d3.json "data.json", (data) ->
+		  nv.addGraph ->
+		    chart = nv.models.stackedAreaChart().margin(right: 100).x((d) ->
+		      d[0]
+		    ).y((d) ->
+		      d[1]
+		    ).useInteractiveGuideline(true)\
+		    .rightAlignYAxis(true)\
+		    .transitionDuration(500)\
+		    .showControls(true)\
+		    .clipEdge(true)
+		    chart.xAxis.tickFormat d3.format(",.2f")
+		    chart.yAxis.tickFormat d3.format(",.2f")
+		    d3.select("#chart svg").datum(data).call chart
+		    nv.utils.windowResize chart.update
+		    chart
 
 Ember.Handlebars.helper 'range-slider', yo_cache.range_slider_view
 Ember.Handlebars.helper 'cache-properties', yo_cache.cache_properties_view

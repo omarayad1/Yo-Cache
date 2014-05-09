@@ -42,3 +42,6 @@ form {
   padding-bottom: 40px;
   min-width: 100%;
   max-width: 100%; }
+
+h1 {
+  text-align: center; }
