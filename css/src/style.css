@@ -11,9 +11,9 @@ body {
 .start-container {
   margin-top: 5%; }
   .start-container h1 {
-    padding-top: 25%; }
+    padding-top: 30%;
+    text-align: center; }
   .start-container p {
-    margin-top: -4%;
     text-align: center; }
 
 .cache-input input {

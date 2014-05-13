@@ -89,7 +89,7 @@ yo_cache.cache_simulator_button = Ember.View.extend
 				iterations: parseInt(iterations)
 			)
 			yo_cache.simulationdata = yo_cache.simulationdata.concat(results.data)
-		fs.writeFileSync('/home/omarayad1/Documents/git/Yo-Cache/data.json', JSON.stringify(yo_cache.simulationdata))
+		fs.writeFileSync('./data.json', JSON.stringify(yo_cache.simulationdata))
 
 yo_cache.cache_graph_view = Ember.View.extend
 	classNames: ['graph']
